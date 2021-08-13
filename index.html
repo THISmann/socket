@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World with Socket.io</title>
+  </head>
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io("http://localhost:3000");
+
+      var send = function(){
+          var text = document.getElementById('m').value;
+          socket.emit('chat', text)
+      }
+       var receive = function(msg){
+            var li = document.createElement('li');
+            li.innerText = msg;
+            document.getElementById('messages').appendChild(li);
+       }
+       
+       socket.on('chat' , receive);
+        
+    </script>
+    <div>
+        <ul id="messages"> </ul>
+        <div class="zone_saisie">
+            <input type="text" id="m" />
+            <button onclick="send()"> send </button>
+        </div>
+    </div> 
+  </body>
+</html>
