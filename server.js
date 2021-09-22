@@ -1,7 +1,8 @@
+ 
 //=============================================================================
 //   DECLARE ALL THE VARIABLE FOR THE Applications 
 //============================================================================= 
-
+ 
 const express = require('express'); 
 const app = express();
 const server = app.listen(3000,console.log("Socket.io Hello World server started!"));
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log("Client connected!"); 
+ 
     socket.on('disconnect', socket => {
         console.log("user  disconneted ")
     })
